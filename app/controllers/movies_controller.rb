@@ -21,12 +21,9 @@ class MoviesController < ApplicationController
     @the_movie.image = params.fetch("query_image")
     @the_movie.director_id = params.fetch("query_director_id")
 
-    if @the_movie.valid?
-      @the_movie.save
-      redirect_to("/movies", { :notice => "Movie created successfully." })
-    else
-      redirect_to("/movies", { :notice => "Movie failed to create successfully." })
-    end
+    @the_movie.save
+
+    redirect_to("/movies")
   end
 
   def update
@@ -40,12 +37,9 @@ class MoviesController < ApplicationController
     @the_movie.image = params.fetch("query_image")
     @the_movie.director_id = params.fetch("query_director_id")
 
-    if @the_movie.valid?
-      @the_movie.save
-      redirect_to("/movies/#{@the_movie.id}", { :notice => "Movie updated successfully."} )
-    else
-      redirect_to("/movies/#{@the_movie.id}", { :alert => "Movie failed to update successfully." })
-    end
+    @the_movie.save
+
+    redirect_to("/movies/#{@the_movie.id})
   end
 
   def destroy

@@ -36,12 +36,9 @@ class DirectorsController < ApplicationController
     @the_director.bio = params.fetch("query_bio")
     @the_director.image = params.fetch("query_image")
 
-    if @the_director.valid?
-      @the_director.save
-      redirect_to("/directors/#{@the_director.id}", { :notice => "Director updated successfully."} )
-    else
-      redirect_to("/directors/#{@the_director.id}", { :alert => "Director failed to update successfully." })
-    end
+    @the_director.save
+
+    redirect_to("/directors/" + @the_director.id.to_s)
   end
 
   def destroy

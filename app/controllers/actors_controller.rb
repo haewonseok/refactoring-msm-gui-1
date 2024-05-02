@@ -19,12 +19,9 @@ class ActorsController < ApplicationController
     @the_actor.bio = params.fetch("query_bio")
     @the_actor.image = params.fetch("query_image")
 
-    if @the_actor.valid?
-      @the_actor.save
-      redirect_to("/actors", { :notice => "Actor created successfully." })
-    else
-      redirect_to("/actors", { :notice => "Actor failed to create successfully." })
-    end
+    @the_actor.save
+    
+    redirect_to("/actors")
   end
 
   def update
@@ -36,12 +33,9 @@ class ActorsController < ApplicationController
     @the_actor.bio = params.fetch("query_bio")
     @the_actor.image = params.fetch("query_image")
 
-    if @the_actor.valid?
-      @the_actor.save
-      redirect_to("/actors/#{@the_actor.id}", { :notice => "Actor updated successfully."} )
-    else
-      redirect_to("/actors/#{@the_actor.id}", { :alert => "Actor failed to update successfully." })
-    end
+    @the_actor.save
+    
+    redirect_to("/actors/" + @the_actor.id.to_s)
   end
 
   def destroy
