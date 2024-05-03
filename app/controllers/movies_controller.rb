@@ -39,7 +39,7 @@ class MoviesController < ApplicationController
 
     @the_movie.save
 
-    redirect_to("/movies/#{@the_movie.id})
+    redirect_to("/movies/#{@the_movie.id}")
   end
 
   def destroy

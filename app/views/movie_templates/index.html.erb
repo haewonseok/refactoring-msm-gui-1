@@ -103,7 +103,11 @@
     </td>
 
     <td>
-      <%= movie.director.name %>
+      <% if movie.director == nil %>
+        no director found
+      <% else %>
+        <%= movie.director.name %>
+      <% end %> 
     </td>
 
     <td>
